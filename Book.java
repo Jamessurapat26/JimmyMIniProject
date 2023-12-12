@@ -1,41 +1,28 @@
 public class Book {
     private String bookCode;
-    private String bookType;
-    private String bookName;
-    private String authorName;
-    private String publisherName;
-    private int yearOfPublication;
+    private String type;
     private int numberOfBooks;
     
     public String getBookCode() {
         return bookCode;
     }
 
-    public String getBookName() {
-        return bookName;
-    }
     
-
     // คอนสตรักเตอร์ที่รับพารามิเตอร์
-    public Book(String bookCode, String bookType, String bookName, String authorName, String publisherName, int yearOfPublication, int numberOfBooks) {
+    public Book(String bookCode, String bookType, int numberOfBooks) {
         this.bookCode = bookCode;
-        this.bookType = bookType;
-        this.bookName = bookName;
-        this.authorName = authorName;
-        this.publisherName = publisherName;
-        this.yearOfPublication = yearOfPublication;
+        this.type=bookType;
         this.numberOfBooks = numberOfBooks;
     }
 
+    public void borrowingBook(int num){
+        this.numberOfBooks = numberOfBooks - 1;
+    }
+
     public String toString() {
-        return "Book{" +
-                "bookCode='" + bookCode + '\'' +
-                ", bookType='" + bookType + '\'' +
-                ", bookName='" + bookName + '\'' +
-                ", authorName='" + authorName + '\'' +
-                ", publisherName='" + publisherName + '\'' +
-                ", yearOfPublication=" + yearOfPublication +
-                ", numberOfBooks=" + numberOfBooks +
-                '}';
+        return 
+                "bookCode : " + bookCode +
+                "\nbookType : " + type+
+                "\nnumberOfBooks : " + numberOfBooks;
     }
 }

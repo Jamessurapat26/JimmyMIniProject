@@ -1,20 +1,14 @@
+import java.util.Calendar;
 import java.util.Date;
-public class BorrowingBooks {
+public class BorrowingBooks extends Book{
     private String borrowingCode;
-    private String bookCode;
     private Date borrowingDate;
-    private Date dateOfReturn;
-    private String memberID;
-
-    public BorrowingBooks() {
-    }
-
-    public BorrowingBooks(String borrowingCode, String bookCode, Date borrowingDate, Date dateOfReturn, String memberID) {
-        this.borrowingCode = borrowingCode;
-        this.bookCode = bookCode;
-        this.borrowingDate = borrowingDate;
-        this.dateOfReturn = dateOfReturn;
-        this.memberID = memberID;
+    private Date dateOfReturn; 
+    public BorrowingBooks(String bookCode, String bookType, int numberOfBooks) {
+        super(bookCode, bookType, numberOfBooks);
+        Date exDate = new Date();
+        this.borrowingDate = exDate;
+        this.dateOfReturn = addDate(exDate, 5);
     }
 
     public String getBorrowingCode() {
@@ -25,14 +19,6 @@ public class BorrowingBooks {
         this.borrowingCode = borrowingCode;
     }
 
-    public String getBookCode() {
-        return bookCode;
-    }
-
-    public void setBookCode(String bookCode) {
-        this.bookCode = bookCode;
-    }
-
     public Date getBorrowingDate() {
         return borrowingDate;
     }
@@ -41,30 +27,24 @@ public class BorrowingBooks {
         this.borrowingDate = borrowingDate;
     }
 
-    public Date getDateOfReturn() {
-        return dateOfReturn;
-    }
-
     public void setDateOfReturn(Date dateOfReturn) {
         this.dateOfReturn = dateOfReturn;
     }
 
-    public String getMemberID() {
-        return memberID;
+    public Date getDateOfReturn() {
+        return dateOfReturn;
     }
 
-    public void setMemberID(String memberID) {
-        this.memberID = memberID;
+    private Date addDate(Date date,int days){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, days);
+        return calendar.getTime();
     }
 
-    @Override
     public String toString() {
-        return "BorrowingBooks{" +
-                "borrowingCode='" + borrowingCode + '\'' +
-                ", bookCode='" + bookCode + '\'' +
-                ", borrowingDate=" + borrowingDate +
-                ", dateOfReturn=" + dateOfReturn +
-                ", memberID='" + memberID + '\'' +
-                '}';
+        return  super.toString()+
+                "\nborrowingDate : " + borrowingDate +
+                "\nReturnBook : " + dateOfReturn ;
     }
 }
