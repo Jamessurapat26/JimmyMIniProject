@@ -1,17 +1,15 @@
 public class Employee extends Member{
     private String employeeID;
     private String employeeName;
-    private String address;
     private String phoneNumber;
 
     public Employee() {
     }
 
-    public Employee(String memberID,String employeeID, String employeeName, String address, String phoneNumber) {
+    public Employee(String memberID,String employeeID, String employeeName, String phoneNumber) {
         super(memberID);
         this.employeeID = employeeID;
         this.employeeName = employeeName;
-        this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
@@ -31,13 +29,6 @@ public class Employee extends Member{
         this.employeeName = employeeName;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -49,11 +40,8 @@ public class Employee extends Member{
 
     public String toString() {
         return  super.toString()+
-                "Employee{" +
-                "employeeID='" + employeeID + '\'' +
-                ", employeeName='" + employeeName + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+                "\nemployeeID : " + employeeID +
+                "\nemployeeName :" + employeeName  +
+                "\nphoneNumber : " + phoneNumber ;
     }
 }
