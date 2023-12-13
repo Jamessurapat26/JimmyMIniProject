@@ -1,17 +1,21 @@
+import java.util.Date;
+
 public class BookDetail {
     private String bookId;
     private String bookName;
     private String authorName;
     private String typeOfBook;
-    private int numberOfBooks;  
+    private int numberOfBooks; 
+    private Date borrowingDate;
+    private Date dateOfReturn;  
 
     public BookDetail(String bookId,String bookname , String authorname, String typebook, int num){
-
         this.bookId = bookId;
         this.bookName = bookname;
         this.authorName = authorname;
         this.typeOfBook = typebook;
         this.numberOfBooks = num;
+        
 
     }
 
