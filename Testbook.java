@@ -1,16 +1,16 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Testbook {
     public static void main(String[] args) {
-        ArrayList<Book> books = new ArrayList<Book>();
-
-        books.add(new BorrowingBooks("11111", "Novel", "The Great Gatsby - F. Scott Fitzgerald (1925)", 20));
-        books.add(new BorrowingBooks("21112", "Technology", "The Innovators - Walter Isaacson (2014)", 20));
-        books.add(new BorrowingBooks("31113", "Education", "The Elements of Style - Strunk & White (1918)", 20));
-        books.add(new BorrowingBooks("41114", "Business", "Rich Dad Poor Dad - Robert T. Kiyosaki (1997)", 20));
-        books.add(new BorrowingBooks("51114", "Health", "The Power of Now - Eckhart Tolle (1997)", 20));
-
+        ArrayList<BookDetail> books = new ArrayList<BookDetail>();
+        books.add(new BookDetail("10001", "To Kill a Mockingbird",  "Harper Lee", "Novels and literature", 20));
+        books.add(new BookDetail("20001", "The Innovators",  "Walter Isaacson", "Technology", 20));
+        books.add(new BookDetail("30001", "The Death and Life of the Great American School System",  "Diane Ravitch", "Education", 20));
+        books.add(new BookDetail("40001", "Sapiens: A Brief History of Humankind",  " Yuval Noah Harari ", "Business", 20));
+        books.add(new BookDetail("50001", "Being Mortal: Medicine and What Matters in the End",  "Atul Gawande ", "Health", 20));
+        displayAllBook(books);
         Scanner scanner = new Scanner(System.in);
         char choice;
         int num;
@@ -31,16 +31,12 @@ public class Testbook {
             switch (num) {
                 case 1:
                     System.out.println("====== Novels ======");
-                    for (Book book : books) {
-                        if (book instanceof BorrowingBooks && book.getBookCode().startsWith("1")) {
-                            System.out.println("bookCode : " + book.getBookCode());
-                            System.out.println("bookType : " + book.getBookType());
-                            System.out.println("borrowingDate : " + ((BorrowingBooks) book).getBorrowingDate());
-                            System.out.println("ReturnBook : " + ((BorrowingBooks) book).getDateOfReturn());
-                            System.out.println(((BorrowingBooks) book).getBookName());
-                            // ลดจำนวนหนังสือที่ยืม
+                    for (BookDetail book : books) {
+                        if (book.getTypeOfBook().equals("Novels and literature")) {
+                            System.out.println(book.toString());
+                            book.setBorrowingDate(new Date());
+                            book.setReturnDate(null);
                             book.decreaseNumberOfBooks();
-                            System.out.println("Number of remaining books: " + book.getNumberOfBooks());
                             if (book.getNumberOfBooks() <= 0) {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
@@ -49,76 +45,68 @@ public class Testbook {
                     break;
                     case 2:
                     System.out.println("====== Technology Books ======");
-                    for (Book book : books) {
-                        if (book instanceof BorrowingBooks && ((BorrowingBooks) book).getBookCode().startsWith("2")) {
-                            System.out.println("bookCode : " + book.getBookCode());
-                            System.out.println("bookType : " + book.getBookType());
-                            System.out.println("borrowingDate : " + ((BorrowingBooks) book).getBorrowingDate());
-                            System.out.println("ReturnBook : " + ((BorrowingBooks) book).getDateOfReturn());
-                            System.out.println(((BorrowingBooks) book).getBookName());
-                            // ลดจำนวนหนังสือที่ยืม
-                            book.decreaseNumberOfBooks();
-                            System.out.println("Number of remaining books: " + book.getNumberOfBooks());
-                            if (book.getNumberOfBooks() <= 0) {
+                    for (BookDetail book : books) {
+                        if (book.getTypeOfBook().equals("Technology")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
                         }
                     }
                     break;
+            
                 case 3:
                     System.out.println("====== Education Books ======");
-                    for (Book book : books) {
-                        if (book instanceof BorrowingBooks && book.getBookCode().startsWith("3")) {
-                           System.out.println("bookCode : " + book.getBookCode());
-                            System.out.println("bookType : " + book.getBookType());
-                            System.out.println("borrowingDate : " + ((BorrowingBooks) book).getBorrowingDate());
-                            System.out.println("ReturnBook : " + ((BorrowingBooks) book).getDateOfReturn());
-                            System.out.println(((BorrowingBooks) book).getBookName());
-                            // ลดจำนวนหนังสือที่ยืม
-                            book.decreaseNumberOfBooks();
-                            System.out.println("Number of remaining books: " + book.getNumberOfBooks());
-                            if (book.getNumberOfBooks() <= 0) {
+                    for (BookDetail book : books) {
+                        if (book.getTypeOfBook().equals("Education")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
                         }
                     }
                     break;
+            
                 case 4:
                     System.out.println("====== Business Books ======");
-                    for (Book book : books) {
-                        if (book instanceof BorrowingBooks && book.getBookCode().startsWith("4")) {
-                            System.out.println("bookCode : " + book.getBookCode());
-                            System.out.println("bookType : " + book.getBookType());
-                            System.out.println("borrowingDate : " + ((BorrowingBooks) book).getBorrowingDate());
-                            System.out.println("ReturnBook : " + ((BorrowingBooks) book).getDateOfReturn());
-                            System.out.println(((BorrowingBooks) book).getBookName());
-                            // ลดจำนวนหนังสือที่ยืม
-                            book.decreaseNumberOfBooks();
-                            System.out.println("Number of remaining books: " + book.getNumberOfBooks());
-                            if (book.getNumberOfBooks() <= 0) {
+                    for (BookDetail book : books) {
+                        if (book.getTypeOfBook().equals("Business")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
                         }
                     }
                     break;
+            
                 case 5:
                     System.out.println("====== Health Books ======");
-                    for (Book book : books) {
-                        if (book instanceof BorrowingBooks && book.getBookCode().startsWith("5")) {
-                            System.out.println("bookCode : " + book.getBookCode());
-                            System.out.println("bookType : " + book.getBookType());
-                            System.out.println("borrowingDate : " + ((BorrowingBooks) book).getBorrowingDate());
-                            System.out.println("ReturnBook : " + ((BorrowingBooks) book).getDateOfReturn());
-                            System.out.println(((BorrowingBooks) book).getBookName());
-                            // ลดจำนวนหนังสือที่ยืม
-                            book.decreaseNumberOfBooks();
-                            System.out.println("Number of remaining books: " + book.getNumberOfBooks());
-                            if (book.getNumberOfBooks() <= 0) {
+                    for (BookDetail book : books) {
+                        if (book.getTypeOfBook().equals("Health")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
                         }
                     }
                     break;
+            
                 default:
                     System.out.println("====== Invalid choice ======");
                     break;
@@ -131,5 +119,11 @@ public class Testbook {
         } while (choice == 'y' || choice == 'Y');
         
         System.out.println("Thanks for using");
+    }
+
+    public static void displayAllBook(ArrayList<BookDetail> books){   
+        for (BookDetail b : books){
+            System.out.println(b.toString());
+        }
     }
 }
