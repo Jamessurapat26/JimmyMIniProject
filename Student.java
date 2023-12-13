@@ -10,7 +10,7 @@ public class Student extends Member {
     }
 
     public Student(String memberID,String studentID, String studentName) {
-        // super(memberID);
+        super(memberID);
         // Date exDate = new Date();
         this.studentID = studentID;
         this.studentName = studentName;

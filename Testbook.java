@@ -64,7 +64,6 @@ public class Testbook {
                             }
                         }
                     }
-                    break;
                 case 3:
                     System.out.println("====== Education Books ======");
                     for (Book book : books) {
