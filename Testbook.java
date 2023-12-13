@@ -103,7 +103,7 @@ public class Testbook {
         System.out.println("Thanks for using");
     }
   
-    public static void displayAllBook(ArrayList<BookDetail> books){
+    public static void displayAllBook(ArrayList<BookDetail> books){   
         for (BookDetail b : books){
             System.out.println(b.toString());
         }
