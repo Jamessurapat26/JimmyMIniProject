@@ -1,18 +1,30 @@
 public class Book {
     private String bookCode;
-    private String type;
-    private int numberOfBooks;
+    private String bookType;
+    protected int numberOfBooks;
+
     
     public String getBookCode() {
         return bookCode;
     }
 
+    public String getBookType(){
+        return bookType;
+    }
     
     // คอนสตรักเตอร์ที่รับพารามิเตอร์
     public Book(String bookCode, String bookType, int numberOfBooks) {
         this.bookCode = bookCode;
-        this.type=bookType;
+        this.bookType =bookType;
         this.numberOfBooks = numberOfBooks;
+    }
+
+    public int getNumberOfBooks() {
+        return this.numberOfBooks;
+    }
+
+    public void decreaseNumberOfBooks() {
+        this.numberOfBooks--;
     }
 
     public void borrowingBook(int num){
@@ -22,7 +34,7 @@ public class Book {
     public String toString() {
         return 
                 "bookCode : " + bookCode +
-                "\nbookType : " + type+
+                "\nbookType : " + bookType+
                 "\nnumberOfBooks : " + numberOfBooks;
     }
 }
