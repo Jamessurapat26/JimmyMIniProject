@@ -32,8 +32,10 @@ public class Testbook {
                 case 1:
                     System.out.println("====== Novels ======");
                     for (BookDetail book : books) {
-                        if (book.getBookType().equals("Novels and literature")) {
+                        if (book.getTypeOfBook().equals("Novels and literature")) {
                             System.out.println(book.toString());
+                            book.setBorrowingDate(new Date());
+                            book.setReturnDate(null);
                             book.decreaseNumberOfBooks();
                             if (book.getNumberOfBooks() <= 0) {
                                 System.out.println("No more books available for borrowing in this category.");
@@ -41,54 +43,70 @@ public class Testbook {
                         }
                     }
                     break;
-                case 2:
+                    case 2:
                     System.out.println("====== Technology Books ======");
                     for (BookDetail book : books) {
-                        if (book.getBookType().equals("Technology")) {
-                            System.out.println(book.toString() + "\nBorrowingDate : " + book.getBorrowingDate() + "\nReturnDate : " + book.getReturnDate());
-                            book.decreaseNumberOfBooks();
-                            if (book.getNumberOfBooks() <= 0) {
+                        if (book.getTypeOfBook().equals("Technology")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
                         }
                     }
                     break;
+            
                 case 3:
                     System.out.println("====== Education Books ======");
                     for (BookDetail book : books) {
-                        if (book.getBookType().equals("Education")) {
-                            System.out.println(book.toString() + "\nBorrowingDate : " + book.getBorrowingDate() + "\nReturnDate : " + book.getReturnDate());
-                            book.decreaseNumberOfBooks();
-                            if (book.getNumberOfBooks() <= 0) {
+                        if (book.getTypeOfBook().equals("Education")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
                         }
                     }
                     break;
+            
                 case 4:
                     System.out.println("====== Business Books ======");
                     for (BookDetail book : books) {
-                        if (book.getBookType().equals("Business")) {
-                            System.out.println(book.toString() + "\nBorrowingDate : " + book.getBorrowingDate() + "\nReturnDate : " + book.getReturnDate());
-                            book.decreaseNumberOfBooks();
-                            if (book.getNumberOfBooks() <= 0) {
-                                System.out.println("No more books available for borrowing in this category.");
-                            }
-                        }
-                    } 
-                    break;
-                case 5:
-                    System.out.println("====== Health Books ======");
-                    for (BookDetail book : books) {
-                        if (book.getBookType().equals("Health")) {
-                            System.out.println(book.toString() + "\nBorrowingDate : " + book.getBorrowingDate() + "\nReturnDate : " + book.getReturnDate());
-                            book.decreaseNumberOfBooks();
-                            if (book.getNumberOfBooks() <= 0) {
+                        if (book.getTypeOfBook().equals("Business")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
                                 System.out.println("No more books available for borrowing in this category.");
                             }
                         }
                     }
                     break;
+            
+                case 5:
+                    System.out.println("====== Health Books ======");
+                    for (BookDetail book : books) {
+                        if (book.getTypeOfBook().equals("Health")) {
+                            System.out.println(book.toString());
+                            if (book.isAvailableForBorrowing()) {
+                                book.setBorrowingDate(new Date());
+                                book.setReturnDate(null);
+                                book.decreaseNumberOfBooks();
+                            } else {
+                                System.out.println("No more books available for borrowing in this category.");
+                            }
+                        }
+                    }
+                    break;
+            
                 default:
                     System.out.println("====== Invalid choice ======");
                     break;
@@ -102,7 +120,7 @@ public class Testbook {
         
         System.out.println("Thanks for using");
     }
-  ///
+
     public static void displayAllBook(ArrayList<BookDetail> books){   
         for (BookDetail b : books){
             System.out.println(b.toString());
