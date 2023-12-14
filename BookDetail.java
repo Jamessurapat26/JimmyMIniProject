@@ -35,6 +35,10 @@ public class BookDetail {
         return typeOfBook;
     }
 
+    public void setNumberOfBooks(int numberOfBooks) {
+        this.numberOfBooks = numberOfBooks;
+    }
+
     
     public String toString() {
         return "BookID : "+bookId+
