@@ -40,7 +40,7 @@ public class Employee extends Member{
 
     public String toString() {
         return  super.toString()+
-                "\nemployeeID : " + employeeID +
+                "employeeID : " + employeeID +
                 "\nemployeeName :" + employeeName  +
                 "\nphoneNumber : " + phoneNumber ;
     }

@@ -15,22 +15,28 @@ public class Mylibary {
         
         // displayAllBook(book);
         ArrayList<Member> member = new ArrayList<Member>();
-        member.add(new Student("123450","65123465","Jimmy")) ;
-
+        member.add(new Student("10001","65100001","AAAAA")) ;
+        member.add(new Student("10002","65100002","BBBBB")) ;
+        member.add(new Student("10003","65100003","CCCCC")) ;
+        member.add(new Student("10004","65100004","DDDDD")) ;
+        member.add(new Employee("10005", "500001", "EEEEE", "062-0000001"));
+        member.add(new Employee("10006", "500002", "FFFFF", "062-0000002"));
+        member.add(new Employee("10007", "500003", "GGGGG", "062-0000003"));
+        member.add(new Employee("10008", "500004", "HHHHH", "062-0000004"));
         // displayMember(member.get(0));
         char c ;
-        String MemberID;
+        String memberID;
         Member checkMember = null ;
-        int i = 0;
+  
         do {
             displayMenu1();
             System.out.print("Select Choice");
             int choice = sc.nextInt() ;
             switch (choice) {
                 case 1:
-                    System.out.println("MemberID : ");
-                    MemberID = sc.next();
-                    checkMember = checkMemberId(MemberID, member);
+                    System.out.print("MemberID : ");
+                    memberID = sc.next();
+                    checkMember = checkMemberId(memberID, member);
                     displayUserDetail(checkMember);
                     break;
 
@@ -56,7 +62,7 @@ public class Mylibary {
 
         } while (c == 'y'||c == 'Y');
     
-    
+        sc.close();
     }
 
     public static void displayBorrowing(ArrayList<Book> boo){
@@ -68,6 +74,7 @@ public class Mylibary {
         for (BookDetail b : book){
             System.out.println(b.toString());
         }
+        System.out.println("==========================");
     }
     public static void displayBook(BookDetail b){
         System.out.println(b.toString());
@@ -80,11 +87,19 @@ public class Mylibary {
 
     public static Member checkMemberId(String m ,ArrayList<Member> mem){
         for(int i = 0 ; i < mem.size() ; i++){
-            if(mem.get(i)instanceof Student){
-                if (m.equals(mem.get(i).getMemberID())) {
-                    return mem.get(i);
-                }
+            if(m.equals(mem.get(i).getMemberID())){
+                return mem.get(i);
             }
+            // if(mem.get(i)instanceof Student){
+            //     if (m.equals(mem.get(i).getMemberID())) {
+            //         return mem.get(i);
+            //     }
+            // }
+            // if(mem.get(i)instanceof Employee){
+            //     if (m.equals(mem.get(i).getMemberID())) {
+            //         return mem.get(i);
+            //     }
+            // }
         }
 
         return null;
@@ -92,6 +107,11 @@ public class Mylibary {
 
     public static void displayUserDetail(Member m){
         if(m instanceof Student){
+            System.out.println("==========================");
+            System.out.println(m.toString());
+        }
+        if(m instanceof Employee){
+            System.out.println("==========================");
             System.out.println(m.toString());
         }
     }
